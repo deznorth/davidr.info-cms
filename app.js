@@ -10,6 +10,7 @@ const methodOverride  = require("method-override");
 
 //import api Routes
 const sitemetaRoutes = require('./api/routes/sitemeta');
+const projectRoutes = require('./api/routes/project');
 
 //Development environment setup [if in dev, you'll need a valid svars.json file]
 const dev = app.get('env') !== 'production';
@@ -43,6 +44,7 @@ if(dev){
 // Routes
 
 app.use('/api/sitemeta', sitemetaRoutes);
+app.use('/api/projects', projectRoutes);
 
 app.get('*', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
