@@ -7,15 +7,23 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride  = require("method-override");
+const passport = require('passport');
+const localStrategy = require('passport-local');
+
+const { isLoggedIn } = require('./api/middleware');
+
+//Models
+const User = require('./api/models/user');
 
 //import api Routes
+const userRoutes = require('./api/routes/user');
 const sitemetaRoutes = require('./api/routes/sitemeta');
 const projectRoutes = require('./api/routes/project');
 
 //Development environment setup [if in dev, you'll need a valid svars.json file]
 const dev = app.get('env') !== 'production';
 const svarsFile = dev ? require('./svars') : {};
-const API_KEY = dev ? svarsFile.apikey : process.env.API_KEY;
+const SESSION_SECRET = dev ? svarsFile.sessionSecret : process.env.SESSION_SECRET;
 
 //Database Setup
 const DB_URL = dev ? svarsFile.dburl : process.env.DB_URL;
@@ -39,14 +47,28 @@ if(dev){
     app.use(morgan('dev'));
 }
 
+/* 
+    Passport Config
+*/
 
+app.use(require('express-session')({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Routes
 
+app.use('/api/user', userRoutes);
 app.use('/api/sitemeta', sitemetaRoutes);
 app.use('/api/projects', projectRoutes);
 
-app.get('*', (req,res) => {
+app.get('*', isLoggedIn, (req,res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 

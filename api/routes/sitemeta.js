@@ -5,10 +5,8 @@ const middleware = require('../middleware');
 const Sitemeta = require('../models/sitemeta');
 const SocialLink = require('../models/socialLink');
 
-router.use(middleware.checkApiKey);
-
 //CREATE
-router.post('/socialLink', (req,res) => {
+router.post('/socialLink', middleware.isLoggedIn, (req,res) => {
     Sitemeta.findOne({}, (err, sitemeta) => {
         if(err){
             console.log(err);
@@ -38,7 +36,7 @@ router.post('/socialLink', (req,res) => {
 });
 
 //READ
-router.get('/', (req,res) => {
+router.get('/', middleware.isLoggedIn, (req,res) => {
     Sitemeta.find({}, { _id: 0 }).populate('socialLinks').exec((err, sitemeta) => {
         if(err) console.log(err);
         else{
@@ -47,7 +45,7 @@ router.get('/', (req,res) => {
     });
 });
 
-router.get('/bio', (req,res) => {
+router.get('/bio', middleware.isLoggedIn, (req,res) => {
     Sitemeta.find({}, { Bio:1, _id: 0 }, (err, sitemeta) => {
         if(err) console.log(err);
         else{
@@ -67,7 +65,7 @@ router.get('/socialLinks', (req,res) => {
 
 //UPDATE
 
-router.put('/socialLink', (req,res) => {
+router.put('/socialLink', middleware.isLoggedIn, (req,res) => {
     SocialLink.findOneAndUpdate({ _id: req.body.id }, { 
         url: req.body.url,
         label: req.body.label,
@@ -89,7 +87,7 @@ router.put('/socialLink', (req,res) => {
     });
 });
 
-router.put('/bio', (req,res) => {
+router.put('/bio', middleware.isLoggedIn, (req,res) => {
     Sitemeta.findOneAndUpdate({}, {
         Bio: {
             professional: {
@@ -120,7 +118,7 @@ router.put('/bio', (req,res) => {
 
 //DESTROY
 
-router.delete('/socialLink', (req,res) => {
+router.delete('/socialLink', middleware.isLoggedIn, (req,res) => {
     SocialLink.findOneAndDelete({ _id:req.body.id }, (err, socialLink) => {
         if(err){
             console.log(err);

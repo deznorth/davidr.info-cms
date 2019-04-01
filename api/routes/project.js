@@ -6,10 +6,8 @@ const middleware = require('../middleware');
 const Project = require('../models/project');
 const BlogPost = require('../models/blogPost');
 
-router.use(middleware.checkApiKey);
-
 //Create
-router.post('/create', (req,res) => {
+router.post('/create', middleware.isLoggedIn, (req,res) => {
     if(req.body.blogPost && req.body.blogPost !== ''){
         Project.create({
             isHighlighted: req.body.isHighlighted,
