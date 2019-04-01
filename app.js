@@ -6,6 +6,7 @@ const compression = require('compression');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride  = require("method-override");
 
 //import api Routes
 const sitemetaRoutes = require('./api/routes/sitemeta');
@@ -23,6 +24,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true });
 const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5000);
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(methodOverride("_method"));
 
 if(!dev){
     app.disable('x-powered-by');
