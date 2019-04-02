@@ -1,33 +1,36 @@
-.App {
-  text-align: center;
-}
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-03-04 13:34:59 
+ * @Last Modified by: David M. Rojas Gonzalez // deznorth.com
+ * @Last Modified time: 2019-03-05 14:42:02
+*/
+@import './resources/vars/colors';
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App{
+  .bg-glass{
+    background-color: rgba(0,0,0,0.15);
+    box-shadow: -2px 4px 5px rgba(0,0,0,0.35);
   }
-  to {
-    transform: rotate(360deg);
+  
+  a{
+    color: $color-secondary;
+    text-decoration: none;
+    &:hover{
+      color: darken($color-secondary, 15);
+      text-decoration: underline;
+    }
+    &:active{
+      color: lighten($color-secondary, 15);
+      text-decoration: underline;
+    }
+  }
+  .App-content{
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 400px) {
+    .App-content{
+      padding: 1.5 .5rem;
+    }
   }
 }

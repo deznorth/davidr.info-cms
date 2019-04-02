@@ -1,0 +1,29 @@
+/*
+ * @Author: David M. Rojas Gonzalez // deznorth.com 
+ * @Date: 2019-03-05 14:02:02 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-28 14:39:21
+*/
+
+@import '../../../resources/vars/colors';
+
+a.download-resume{
+    text-decoration: none;
+    color: $color-txt-onDark;
+    text-transform: uppercase;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding: .5rem;
+    border: 2px solid $color-txt-onDark;
+    transition: transform .05s;
+    &:hover{
+      color: $color-secondary;
+      border-color: $color-secondary;
+      transform: translate(0, -2px);
+    }
+    &:active{
+      color: darken($color-secondary, 35);
+      border-color: darken($color-secondary, 35);
+      transform: translate(0, 2px);
+    }
+  }

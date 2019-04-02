@@ -1,0 +1,20 @@
+/*
+* @Author: David M. Rojas Gonzalez // davidr.info  
+* @Date: 2019-03-08 20:32:10  
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-28 14:40:55
+*/
+
+@import '../../../resources/vars/colors';
+
+.skillsSection{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+
+    @media (max-width: 600px){
+        justify-content: center;
+    }
+}

@@ -1,0 +1,94 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-03-04 20:48:06 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-28 14:35:02
+*/
+@import '../../../resources/vars/colors';
+
+.socialBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1200px){
+        flex-direction: column;
+    }
+    ul{
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        max-width: 36rem;
+    }
+
+    .social-link{
+        text-decoration: none;
+        color: $color-txt-onDark;
+        text-transform: capitalize;
+        margin: .5rem .25rem;
+        width: 100px;
+        padding: .5rem;
+        border: 2px solid $color-txt-onDark;
+        transition: .05s;
+        text-align: center;
+        &:hover{
+            color: $color-txt-onDark;
+            text-decoration: none;
+        }
+
+        &.linkedin{
+            &:hover{
+                border-color: $color-brand-linkedin;
+                transform: translate(0, -2px);
+                }
+            &:active{
+                transform: translate(0, 2px);
+                color: darken($color-txt-onDark, 35);
+                border-color: darken($color-brand-linkedin, 15);
+            }
+        }
+        &.github{
+            &:hover{
+                border-color: $color-brand-github;
+                transform: translate(0, -2px);
+                }
+            &:active{
+                transform: translate(0, 2px);
+                color: darken($color-txt-onDark, 35);
+                border-color: darken($color-brand-github, 15);
+            }
+        }
+        &.codepen{
+            &:hover{
+                border-color: $color-brand-codepen;
+                transform: translate(0, -2px);
+                }
+            &:active{
+                transform: translate(0, 2px);
+                color: darken($color-txt-onDark, 35);
+                border-color: darken($color-brand-codepen, 15);
+            }
+        }
+        &.instagram{
+            &:hover{
+                border-color: $color-brand-instagram;
+                transform: translate(0, -2px);
+                }
+            &:active{
+                transform: translate(0, 2px);
+                color: darken($color-txt-onDark, 35);
+                border-color: darken($color-brand-instagram, 15);
+            }
+        }
+    }
+
+    .download-resume{
+        position: absolute;
+        right: 1.5rem;
+
+        @media (max-width: 1200px){
+            position: inherit;
+        }
+    }
+}

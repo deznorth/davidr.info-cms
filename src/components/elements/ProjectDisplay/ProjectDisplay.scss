@@ -1,0 +1,27 @@
+/*
+* @Author: David M. Rojas Gonzalez // davidr.info  
+* @Date: 2019-03-17 18:02:52  
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-28 14:40:11
+*/
+
+@import '../../../resources/vars/colors';
+
+.projectDisplay{
+    display: grid;
+    grid-template-rows: auto;
+    padding: 1rem;
+    
+    img{
+        width: 100%;
+    }
+    h3{
+        margin-bottom: .2rem;
+    }
+    .projectLinks{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

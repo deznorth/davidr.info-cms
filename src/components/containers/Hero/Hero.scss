@@ -1,0 +1,116 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-03-04 19:57:05 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-28 14:41:55
+*/
+@import '../../../resources/vars/colors';
+
+$break-lg: 1300px;
+$break-md: 1150px;
+$break-sm: 900px;
+$break-xs: 400px;
+
+.hero-component{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .2s height;
+    min-height: 77vh;
+    @media (max-width: $break-md){
+        min-height: 70vh;
+    }
+    @media (max-width: $break-sm){
+        min-height: 65vh;
+    }
+    
+    .hero-title{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        min-height: 205px;
+
+        p{
+            font-family: 'Bree Serif', serif;
+            font-size: 10rem;
+            margin: 0 5rem 0 5rem;
+            color: $color-primary;
+            @media (max-width: $break-lg){
+                font-size: 8rem;
+                margin: 0 4rem 0 4rem;
+            }
+            @media (max-width: $break-md){
+                font-size: 6rem;
+                margin: 0 3rem 0 3rem;
+            }
+            @media (max-width: $break-sm){
+                font-size: 4rem;
+                margin: 0 2rem 0 2rem;
+            }
+        }
+
+        h1{
+            display: flex;
+            flex-direction: column;
+            width: 42rem; //Resul from sizeofsmallspan^2 * sizeofbigspan * (sizeofbigspan-0.5)
+            transition: .2s;
+            @media (max-width: $break-lg){
+                width: 36rem;
+            }
+            @media (max-width: $break-md){
+                width: 28rem;
+                font-size: 1.5rem;
+            }
+            @media (max-width: $break-sm){
+                width: 24rem;
+                font-size: 1.2rem;
+            }
+            span:first-of-type{
+                color: $color-primary;
+            }
+            span:nth-of-type(2){
+                margin-left: 2rem;
+                font-size: 3.5rem;
+                color: $color-txt-onDark;
+
+                @media (max-width: $break-lg){
+                    font-size: 2.5rem;
+                }
+                @media (max-width: $break-md){
+                    font-size: 1.8rem;
+                }
+                @media (max-width: $break-sm){
+                    font-size: 1.5rem;
+                }
+            }
+            span:last-of-type{
+                color: $color-primary;
+                margin: 0 0 0 auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .hero-component{
+        .hero-title{
+            flex-direction: column;
+            align-items: flex-start;
+
+            p{
+                font-size: 3rem;
+                margin: 0;
+            }
+            h1{
+                width: 18rem;
+                font-size: 1rem;
+                span:nth-of-type(2){
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+}
