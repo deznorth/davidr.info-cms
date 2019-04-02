@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-28 15:11:08
+ * @Last Modified time: 2019-04-02 00:02:23
 */
 
 import React, { Component } from 'react';
@@ -15,10 +15,8 @@ import './App.scss';
 import Header from './components/containers/Header/Header';
 import Footer from './components/containers/Footer/Footer';
 //Pages
-import HomePage from './components/pages/Home/HomePage';
-import BlogPage from './components/pages/Blog/BlogPage/BlogPage';
-import BlogRangePage from './components/pages/Blog/BlogRangePage/BlogRangePage';
-import BlogPostPage from './components/pages/Blog/BlogPostPage/BlogPostPage';
+import LoginPage from './components/pages/Login/LoginPage';
+import SideMenu from './components/elements/SideMenu/SideMenu';
 
 
 class App extends Component {
@@ -28,16 +26,16 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="App">
-            <div className="App-content bg-glass">
-              <Header />
-              <div id="PageWrapper">
-                <Switch>
-                  <Route path="/" component={HomePage} exact/>
-                  <Route path="/blog" component={BlogPage} exact/>
-                  <Route path="/blog/:year/:month" component={BlogRangePage} exact/>
-                  <Route path="/blog/:year/:month/:id" component={BlogPostPage} exact/>
-                  <Route component={()=>{return( <h1>Error 404</h1> );}} />
-                </Switch>
+            <div className="AppWrapper">
+              <SideMenu />
+              <div className="App-content bg-glass">
+                <Header />
+                <div id="PageWrapper">
+                  <Switch>
+                    <Route path="/" component={LoginPage} exact/>
+                    <Route component={()=>{return( <h1>Error 404</h1> );}} />
+                  </Switch>
+                </div>
               </div>
             </div>
             <Footer />

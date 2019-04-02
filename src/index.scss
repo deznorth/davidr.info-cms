@@ -7,13 +7,12 @@
 @import './resources/vars/colors';
 
 html{
-  min-height: 100vh;
   background-image: linear-gradient(132deg, $color-grad-1,$color-grad-2);
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 2rem;
+  padding: 2rem 0 0 0;
   @media (max-width: 600px){
-    padding: 1.2rem;
+    padding: 1.2rem 0 0 0;
   }
 }
 

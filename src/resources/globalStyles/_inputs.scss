@@ -1,0 +1,46 @@
+
+@import '../vars/colors';
+
+input[type="text"],
+input[type="password"]{
+    margin-bottom: 1rem;
+    padding: .5rem;
+    font-size: 1rem;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid white;
+    color: $color-txt-onDark;
+
+    &::placeholder{
+        color: #ccc;
+    }
+
+    &:hover{
+        background-color: rgba(0,0,0,0.1);
+    }
+    &:focus{
+        outline: none;
+        border-color: $color-accent;
+        background-color: rgba(0,0,0,0.2);
+    }
+}
+
+input[type="submit"]{
+    padding: .5rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: $color-txt-onDark;
+    background-color: $color-accent;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: transform 0.05s ease-out, background-color 0.2s ease;
+    
+    &:focus{ outline: none }
+    &:hover{
+        background-color: darken($color-accent, 8);
+        transform: translate(0,-2px);
+    }
+    &:active{
+        background-color: lighten($color-accent, 8);
+        transform: translate(0,2px);
+    }
+}

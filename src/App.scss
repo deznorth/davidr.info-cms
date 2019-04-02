@@ -5,8 +5,14 @@
  * @Last Modified time: 2019-03-05 14:42:02
 */
 @import './resources/vars/colors';
+@import './resources/globalStyles/inputs';
 
 .App{
+  .AppWrapper{
+    display: flex;
+    flex-direction: row;
+  } 
+
   .bg-glass{
     background-color: rgba(0,0,0,0.15);
     box-shadow: -2px 4px 5px rgba(0,0,0,0.35);
@@ -24,8 +30,18 @@
       text-decoration: underline;
     }
   }
+
   .App-content{
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
     padding: 1.5rem;
+    width: 100%;
+    min-height: 85vh;
+
+    #PageWrapper{
+      height: 100%;
+    }
   }
 
   @media (max-width: 400px) {
