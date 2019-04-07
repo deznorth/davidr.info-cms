@@ -1,3 +1,7 @@
+//Meta Actions
+export const FETCH_BIO = 'FETCH_BIO';
+export const FETCH_SOCIALLINKS = 'FETCH_SOCIALLINKS';
+
 //Skills Actions
 export const FETCH_SKILLS = 'FETCH_SKILLS';
 

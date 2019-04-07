@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const sitemetaSchema = mongoose.Schema({
     Bio: {
         professional: {
-            imgUrl: String,
-            title: String,
-            body: String
+            imgUrl: { type:String, required:true },
+            title: { type:String, default:'About Me'},
+            body: { type:String, required:true }
         },
         extra: {
-            title: String,
-            body: String
+            title: { type:String, required:true },
+            body: { type:String, required:true }
         }
     },
     socialLinks: [
