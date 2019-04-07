@@ -1,6 +1,12 @@
-import { FETCH_BIO, FETCH_SOCIALLINKS } from './types';
+import { TOGGLE_SIDEMENU, FETCH_BIO, FETCH_SOCIALLINKS } from './types';
+
 const token = localStorage.getItem('auth_token');
 
+export const toggleSideMenu = () => dispatch => {
+    dispatch({
+        type: TOGGLE_SIDEMENU
+    });
+}
 
 export const fetchBio = () => dispatch => {
     fetch(`/api/sitemeta/bio?token=${token}`)

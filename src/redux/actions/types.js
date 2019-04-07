@@ -1,4 +1,5 @@
 //Meta Actions
+export const TOGGLE_SIDEMENU = 'TOGGLE_SIDEMENU';
 export const FETCH_BIO = 'FETCH_BIO';
 export const FETCH_SOCIALLINKS = 'FETCH_SOCIALLINKS';
 

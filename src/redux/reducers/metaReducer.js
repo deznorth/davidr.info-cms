@@ -1,6 +1,7 @@
-import { FETCH_BIO, FETCH_SOCIALLINKS } from '../actions/types';
+import { TOGGLE_SIDEMENU, FETCH_BIO, FETCH_SOCIALLINKS } from '../actions/types';
 
 const initialState = {
+    showSideMenu: true,
     Bio: {
         professional: {},
         extra: {}
@@ -10,6 +11,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type){
+        case TOGGLE_SIDEMENU:
+            return {
+                ...state,
+                showSideMenu: !state.showSideMenu
+            };
         case FETCH_BIO:
             return {
                 ...state,

@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-04-07 04:01:34
+ * @Last Modified time: 2019-04-07 17:42:36
 */
 
 import React, { Component } from 'react';
@@ -15,6 +15,7 @@ import PRoute from './middleware/ProtectedRoute';
 //Components
 import Header from './components/containers/Header/Header';
 import Footer from './components/containers/Footer/Footer';
+
 //Pages
 import LoginPage from './components/pages/Login/LoginPage';
 import SideMenu from './components/elements/SideMenu/SideMenu';
@@ -35,7 +36,9 @@ class App extends Component {
                 <Header />
                 <div id="PageWrapper">
                   <Switch>
-                    <Route path="/" component={LoginPage} exact/>
+                    <Route path="/" component={() => {
+                      return <LoginPage showSideMenu={this.handleShowSideMenu} />;
+                    }} exact/>
                     <PRoute path="/dashboard" component={DashboardPage} exact/>
                     <Route component={ErrorPage} />
                   </Switch>

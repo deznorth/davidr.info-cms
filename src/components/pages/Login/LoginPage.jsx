@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './LoginPage.scss';
 
 //Middleware
@@ -8,12 +10,19 @@ import Auth from '../../../middleware/auth';
 //Components
 import MessageBit from '../../elements/MessageBit/MessageBit';
 
+//Actions
+import { toggleSideMenu } from '../../../redux/actions/metaActions';
+
 class LoginPage extends Component {
     
     state = {
         username: '',
         password: '',
         redirect: false
+    }
+
+    componentDidMount(){
+        this.props.toggleSideMenu();
     }
 
     handleChange = (e) => {
@@ -55,8 +64,10 @@ class LoginPage extends Component {
 
     render(){
         document.title = 'Login';
+        
         let redirect;
         if(Auth.isLoggedIn()){
+            this.props.toggleSideMenu();
             redirect = <Redirect to="/dashboard" />;
         }
 
@@ -84,4 +95,8 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+LoginPage.propTypes = {
+    toggleSideMenu: PropTypes.func.isRequired
+}
+
+export default connect(null, { toggleSideMenu })(LoginPage);

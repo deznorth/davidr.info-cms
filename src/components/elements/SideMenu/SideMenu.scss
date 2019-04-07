@@ -1,12 +1,12 @@
 
-$open-width: 400px;
+$open-width: 15rem;
 
 #SideMenu{
     max-width: 0;
     overflow: hidden;
-    transition: all 0.2s ease-out;
 
     &.open{
-        
+        min-width: $open-width;
+        max-width: $open-width;
     }
 }
