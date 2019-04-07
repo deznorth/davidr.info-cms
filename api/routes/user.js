@@ -75,7 +75,25 @@ router.get('/all', Auth.checkToken, (req,res) => {
             res.status(200).json({
                 success: true,
                 users: users,
-                entries: users.length
+                total: users.length
+            });
+        }
+    });
+});
+
+//Read: Total
+router.get('/total', (req,res) => {
+    User.estimatedDocumentCount((err, count) => {
+        if(err){
+            console.log(err);
+            res.status(500).json({
+                success: false,
+                message: 'Error while retrieving User count'
+            });
+        } else {
+            res.status(200).json({
+                success:true,
+                total: count
             });
         }
     });
@@ -99,6 +117,7 @@ router.get('/:id', Auth.checkToken, (req,res) => {
         }
     });
 });
+
 
 //Destroy
 router.delete('/remove/:id', Auth.checkToken, (req,res) => {
