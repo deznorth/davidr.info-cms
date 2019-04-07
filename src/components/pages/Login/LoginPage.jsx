@@ -22,6 +22,7 @@ class LoginPage extends Component {
     }
 
     componentDidMount(){
+        document.title = 'Login';
         this.props.toggleSideMenu();
     }
 
@@ -66,8 +67,7 @@ class LoginPage extends Component {
     }
 
     render(){
-        document.title = 'Login';
-        
+
         let redirect;
         if(Auth.isLoggedIn()){
             redirect = <Redirect to="/dashboard" />;

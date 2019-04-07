@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './DashboardPage.scss';
 
 class DashboardPage extends Component{
+
+    componentDidMount(){
+        document.title = 'Dashboard';
+    }
+
     render(){
         return (
             <div id="DashboardPage">

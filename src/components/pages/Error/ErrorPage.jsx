@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './ErrorPage.scss';
 
 class ErrorPage extends Component{
+    componentDidMount(){
+        document.title = 'Error';
+    }
+
     render(){
         return (
             <div id="ErrorPage">
