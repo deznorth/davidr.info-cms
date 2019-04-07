@@ -1,9 +1,53 @@
 
-$open-width: 15rem;
+$open-width: 18rem;
 
 #SideMenu{
     max-width: 0;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .navLink{
+        color: white;
+        font-size: 1.5rem;
+        margin: 1rem 0;
+
+        i{
+            margin-right: .6rem;
+        }
+
+        &.logoutBtn{
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            width: fit-content;
+            &:hover{
+                text-decoration: underline;
+            }
+            &:active{
+            text-decoration: underline;
+            }
+        }
+    }
+
+    .navLinksGroup{
+        ul{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0;
+        }
+    }
+
+    .extraLinksGroup{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 2rem;
+    }
 
     &.open{
         min-width: $open-width;

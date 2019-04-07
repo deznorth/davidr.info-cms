@@ -25,6 +25,12 @@ class LoginPage extends Component {
         this.props.toggleSideMenu();
     }
 
+    componentDidUpdate(){
+        if(Auth.isLoggedIn()){
+            this.props.toggleSideMenu();
+        }
+    }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name]:e.target.value
@@ -43,20 +49,17 @@ class LoginPage extends Component {
             })
         }).then(res => res.json().then(data => {
             const {success, message, token} = data;
-            
-            switch(success){
-                case true:
-                    localStorage.setItem('auth_token', token);
+
+            if(success){
+                localStorage.setItem('auth_token', token);
                     this.setState({
                         error: undefined,
                         redirect: true
                     });
-                    break;
-                case false:
-                    this.setState({
-                        error: message
-                    });
-                    break;
+            } else {
+                this.setState({
+                    error: message
+                });
             }
         }));
         e.preventDefault();
@@ -67,7 +70,6 @@ class LoginPage extends Component {
         
         let redirect;
         if(Auth.isLoggedIn()){
-            this.props.toggleSideMenu();
             redirect = <Redirect to="/dashboard" />;
         }
 

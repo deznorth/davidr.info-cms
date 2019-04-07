@@ -2,84 +2,42 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:15:35 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-28 14:42:27
+ * @Last Modified time: 2019-04-07 18:19:39
 */
 @import '../../../resources/vars/colors';
 
-.App-header{
+.App-header.column{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
-    .app-brand{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .app-logo{
-            width: 4rem;
-            margin-right: 1.2rem;
-            transition: .2s;
-            @media (max-width: 500px){
-                margin-right: .8rem;
-            }
-        }
-        .header-brand-name{
-            color: $color-txt-onDark;
-            font-family: 'Bree Serif', serif;
-            font-size: 1.4rem;
-            margin: 0;
-            transition: .2s;
-            @media (max-width: 600px){
-                font-size: 1.2rem;
-            }
-        }
-        .header-brand-title{
-            color: $color-primary;
-            font-family: 'Bree Serif', serif;
-            font-size: 1.4rem;
-            transition: .2s;
-            @media (max-width: 600px){
-                font-size: 1.2rem;
-            }
-            margin: 0;
-        }
+    .app-logo{
+        width: 6rem;
+        margin: 2rem 0 1.2rem 0;
     }
-    .app-nav{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        ul{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-      .header-link{
-        text-decoration: none;
+    span{
+        text-align: center;
+    }
+    .header-brand-name{
         color: $color-txt-onDark;
-        text-transform: uppercase;
-        margin-right: 2rem;
-        background: none;
-        border: none;
-        padding: 0;
-
-        &:hover{
-            color: $color-secondary;
+        font-family: 'Bree Serif', serif;
+        font-size: 1.2rem;
+        margin: 0;
+        transition: .2s;
+        @media (max-width: 600px){
+            font-size: 1.2rem;
         }
-        &:active{
-            color: darken($color-secondary, 35);
-        }
-      }
     }
-}
-
-@media (max-width: 1200px){
-    .App-header{
-        flex-direction: column;
-
-        .app-nav{
-            flex-direction: column;
+    .header-brand-title{
+        color: $color-primary;
+        font-family: 'Bree Serif', serif;
+        font-size: 1.2rem;
+        transition: .2s;
+        @media (max-width: 600px){
+            font-size: 1.2rem;
         }
+        margin: 0;
     }
 }

@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-04-07 17:42:36
+ * @Last Modified time: 2019-04-07 18:42:19
 */
 
 import React, { Component } from 'react';
@@ -13,7 +13,6 @@ import './App.scss';
 import PRoute from './middleware/ProtectedRoute';
 
 //Components
-import Header from './components/containers/Header/Header';
 import Footer from './components/containers/Footer/Footer';
 
 //Pages
@@ -33,7 +32,6 @@ class App extends Component {
             <div className="AppWrapper">
               <SideMenu />
               <div className="App-content bg-glass">
-                <Header />
                 <div id="PageWrapper">
                   <Switch>
                     <Route path="/" component={() => {
