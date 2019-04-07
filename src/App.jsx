@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-04-07 00:36:12
+ * @Last Modified time: 2019-04-07 04:01:34
 */
 
 import React, { Component } from 'react';
@@ -18,6 +18,8 @@ import Footer from './components/containers/Footer/Footer';
 //Pages
 import LoginPage from './components/pages/Login/LoginPage';
 import SideMenu from './components/elements/SideMenu/SideMenu';
+import DashboardPage from './components/pages/Dashboard/DashboardPage';
+import ErrorPage from './components/pages/Error/ErrorPage';
 
 
 class App extends Component {
@@ -34,8 +36,8 @@ class App extends Component {
                 <div id="PageWrapper">
                   <Switch>
                     <Route path="/" component={LoginPage} exact/>
-                    <PRoute path="/dashboard" component={()=>{return(<div>dashboard</div>);}} exact/>
-                    <Route component={()=>{return( <h1>Error 404</h1> );}} />
+                    <PRoute path="/dashboard" component={DashboardPage} exact/>
+                    <Route component={ErrorPage} />
                   </Switch>
                 </div>
               </div>
