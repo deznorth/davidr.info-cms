@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-04-05 21:58:11
+ * @Last Modified time: 2019-04-07 00:36:12
 */
 
 import React, { Component } from 'react';
@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import './App.scss';
+import PRoute from './middleware/ProtectedRoute';
 
 //Components
 import Header from './components/containers/Header/Header';
@@ -33,7 +34,7 @@ class App extends Component {
                 <div id="PageWrapper">
                   <Switch>
                     <Route path="/" component={LoginPage} exact/>
-                    <Route path="/dashboard" component={()=>{return(<div>dashboard</div>);}} exact/>
+                    <PRoute path="/dashboard" component={()=>{return(<div>dashboard</div>);}} exact/>
                     <Route component={()=>{return( <h1>Error 404</h1> );}} />
                   </Switch>
                 </div>
