@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-04-02 00:02:23
+ * @Last Modified time: 2019-04-05 21:58:11
 */
 
 import React, { Component } from 'react';
@@ -33,6 +33,7 @@ class App extends Component {
                 <div id="PageWrapper">
                   <Switch>
                     <Route path="/" component={LoginPage} exact/>
+                    <Route path="/dashboard" component={()=>{return(<div>dashboard</div>);}} exact/>
                     <Route component={()=>{return( <h1>Error 404</h1> );}} />
                   </Switch>
                 </div>

@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const middleware = require('../middleware');
 
 //Models
 const Project = require('../models/project');
 const BlogPost = require('../models/blogPost');
 
 //Create
-router.post('/create', middleware.isLoggedIn, (req,res) => {
+router.post('/create', (req,res) => {
     if(req.body.blogPost && req.body.blogPost !== ''){
         Project.create({
             isHighlighted: req.body.isHighlighted,
