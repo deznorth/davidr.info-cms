@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const projectSchema = mongoose.Schema({
-    isHighlighted: Boolean,
-    imgUrl: String,
-    title: String,
+    isHighlighted: { type:Boolean, default:false},
+    imgUrl: { type:String, default:'https://i.imgur.com/qrjaeB5.png'},
+    title: { type:String, required:true },
     description: String,
     repoUrl: String,
     liveUrl: String,
