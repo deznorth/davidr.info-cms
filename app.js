@@ -18,24 +18,25 @@ const dev = app.get('env') !== 'production';
 const svarsFile = dev ? require('./svars') : {};
 
 //Database Setup
-const DB_URL = dev ? svarsFile.dburl : process.env.DB_URL;
+const DB_URL = dev ? svarsFile.mongodb.db_dev : process.env.DB_URL;
 mongoose.connect(DB_URL, { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
 //App Setup
 
 const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5000);
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
 app.use(methodOverride("_method"));
+app.use(express.static(path.resolve(__dirname, 'build')));
 
 if(!dev){
     app.disable('x-powered-by');
-    app.use(express.static(path.resolve(__dirname, 'build')));
     app.use(compression());
     app.use(morgan('common'));
 }
 
 if(dev){
-    app.use(express.static(path.resolve(__dirname, 'build')));
     app.use(morgan('dev'));
 }
 
@@ -50,7 +51,7 @@ app.get('*', (req,res) => {
 });
 
 app.listen(PORT, err => {
-    if (err) throw err;
+    if (err) console.log(err);
     if(!dev){
         console.log('Server successfully started');
     } else {

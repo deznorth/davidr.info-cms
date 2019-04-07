@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+//Middleware
+const Auth = require('../middleware/auth');
+
+//Models
 const Sitemeta = require('../models/sitemeta');
 const SocialLink = require('../models/socialLink');
 
 //CREATE
-router.post('/socialLink', (req,res) => {
+router.post('/socialLink', Auth.checkToken, (req,res) => {
     Sitemeta.findOne({}, (err, sitemeta) => {
         if(err){
             console.log(err);
@@ -35,7 +39,7 @@ router.post('/socialLink', (req,res) => {
 });
 
 //READ
-router.get('/', (req,res) => {
+router.get('/', Auth.checkToken, (req,res) => {
     Sitemeta.find({}, { _id: 0 }).populate('socialLinks').exec((err, sitemeta) => {
         if(err) console.log(err);
         else{
@@ -64,7 +68,7 @@ router.get('/socialLinks', (req,res) => {
 
 //UPDATE
 
-router.put('/socialLink', (req,res) => {
+router.put('/socialLink', Auth.checkToken, (req,res) => {
     SocialLink.findOneAndUpdate({ _id: req.body.id }, { 
         url: req.body.url,
         label: req.body.label,
@@ -86,7 +90,7 @@ router.put('/socialLink', (req,res) => {
     });
 });
 
-router.put('/bio', (req,res) => {
+router.put('/bio', Auth.checkToken, (req,res) => {
     Sitemeta.findOneAndUpdate({}, {
         Bio: {
             professional: {
@@ -117,7 +121,7 @@ router.put('/bio', (req,res) => {
 
 //DESTROY
 
-router.delete('/socialLink', (req,res) => {
+router.delete('/socialLink', Auth.checkToken, (req,res) => {
     SocialLink.findOneAndDelete({ _id:req.body.id }, (err, socialLink) => {
         if(err){
             console.log(err);
