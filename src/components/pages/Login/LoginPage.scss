@@ -3,6 +3,7 @@
 
 #LoginPage{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -13,6 +14,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        margin-bottom: 1.5rem;
 
         .userfield{
             position: relative;

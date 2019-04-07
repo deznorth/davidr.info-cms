@@ -1,0 +1,92 @@
+
+@import '../../../resources/vars/colors';
+
+$padding: 1rem;
+$margin: 0.1rem;
+$border-radius: 4px;
+$background-opacity: .8;
+$fnt-opacity: 1;
+$fnt-darken-mult: 30;
+$box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+@function set-appropriate-color($color){
+    @if(lightness($color) > 50){
+        @return darken($color, 45); //Light background, return darker color
+    } @else {
+        @return lighten($color, 55); //Dark background, return light color
+    }
+}
+
+//Colors
+
+$primary: #5699ff;
+$secondary: #9475c5;
+$success:#5fbb75;
+$error: #e06e7a;
+$warning: #ffdf81;
+$info: #66c4d3;
+$light: #e2e2e2;
+$dark: #4e4e4e;
+$default: $secondary;
+
+//Background colors derived from the palette
+$bg-default: rgba($default, $background-opacity);
+$bg-primary: rgba($primary, $background-opacity);
+$bg-secondary: rgba($secondary, $background-opacity);
+$bg-success: rgba($success, $background-opacity);
+$bg-error: rgba($error, $background-opacity);
+$bg-warning: rgba($warning, $background-opacity);
+$bg-info: rgba($info, $background-opacity);
+$bg-light: rgba($light, $background-opacity);
+$bg-dark: rgba($dark, $background-opacity);
+
+//Font colors derived from the palette
+$fnt-default: set-appropriate-color($default);
+$fnt-primary: set-appropriate-color($primary);
+$fnt-secondary: set-appropriate-color($secondary);
+$fnt-success: set-appropriate-color($success);
+$fnt-error: set-appropriate-color($error);
+$fnt-warning: set-appropriate-color($warning);
+$fnt-info: set-appropriate-color($info);
+$fnt-light: set-appropriate-color($light);
+$fnt-dark: set-appropriate-color($dark);
+
+$options: 'primary','secondary','success','error','warning','info','light','dark';
+$backgrounds: $bg-primary,$bg-secondary,$bg-success,$bg-error,$bg-warning,$bg-info,$bg-light,$bg-dark;
+$fontColors: $fnt-primary,$fnt-secondary,$fnt-success,$fnt-error,$fnt-warning,$fnt-info,$fnt-light,$fnt-dark;
+
+
+.MessageBit{
+    padding: calc(#{$padding} / 2) $padding;
+    border-radius: $border-radius;
+    background-color: $bg-default;
+    color: $fnt-default;
+    box-shadow: $box-shadow;
+    margin: $margin;
+    font-size: .9rem;
+
+    p{
+        padding: 0;
+        margin: 0;
+        &::before{
+            content: '{ ';
+            font-weight: bold;
+        }
+        &::after{
+            content: ' }';
+            font-weight: bold;
+        }
+    }
+
+    /* 
+        Different flavours of the message:
+            primary, secondary, success, danger, warning, info, light, dark
+    */
+    @for $i from 1 through 8 {
+        $value: #{nth($options,$i)};
+        &.#{$value}{
+            background-color: nth($backgrounds,$i);
+            color: nth($fontColors,$i);
+        }
+    }
+}

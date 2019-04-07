@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './LoginPage.scss';
+
+//Middleware
 import Auth from '../../../middleware/auth';
 
-class LoginPage extends Component {
+//Components
+import MessageBit from '../../elements/MessageBit/MessageBit';
 
+class LoginPage extends Component {
+    
     state = {
         username: '',
         password: '',
@@ -57,7 +62,7 @@ class LoginPage extends Component {
 
         let errorMessage;
         if(this.state.error){
-            errorMessage = <div><br/><p className="alert alert-danger">{this.state.error}</p></div>;
+            errorMessage = <MessageBit type="error" message={this.state.error} />;
         }
         return(
             <div id="LoginPage">
