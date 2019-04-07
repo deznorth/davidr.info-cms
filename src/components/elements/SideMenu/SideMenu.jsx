@@ -39,7 +39,7 @@ class SideMenu extends Component{
                     </ul>
                 </div>
                 <div className="extraLinksGroup">
-                    <a className="navLink viewSiteLink" href="https://www.davidr.info" ref="noreferrer noopener" target="_blank"><i className="fas fa-external-link-alt"></i>View Site</a>
+                    <a className="navLink viewSiteLink" href="https://www.davidr.info" rel="noreferrer noopener" target="_blank"><i className="fas fa-external-link-alt"></i>View Site</a>
                     <button className="navLink logoutBtn" onClick={this.handleLogout}><i className="fas fa-sign-out-alt"></i>Logout</button>
                 </div>
             </div>
