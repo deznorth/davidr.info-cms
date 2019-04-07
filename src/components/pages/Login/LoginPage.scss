@@ -1,0 +1,45 @@
+
+@import '../../../resources/vars/colors';
+
+#LoginPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .userfield{
+            position: relative;
+            i{
+                position: absolute;
+                top: 50%;
+                left: -2.4rem;
+                transform: translate(0, -75%);
+            }
+        }
+
+        .passfield{
+            position: relative;
+            i{
+                position: absolute;
+                top: 50%;
+                left: -2.5rem;
+                transform: translate(0, -75%);
+            }
+        }
+
+        i{
+            font-size: 1.8rem;
+        }
+
+        input[type="submit"]{
+            width: 80%;
+        }
+    }
+}

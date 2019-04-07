@@ -1,26 +1,49 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-03-04 19:02:41 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-04-07 00:36:12
+*/
+
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import './App.scss';
+import PRoute from './middleware/ProtectedRoute';
+
+//Components
+import Header from './components/containers/Header/Header';
+import Footer from './components/containers/Footer/Footer';
+//Pages
+import LoginPage from './components/pages/Login/LoginPage';
+import SideMenu from './components/elements/SideMenu/SideMenu';
+
 
 class App extends Component {
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div className="App">
+            <div className="AppWrapper">
+              <SideMenu />
+              <div className="App-content bg-glass">
+                <Header />
+                <div id="PageWrapper">
+                  <Switch>
+                    <Route path="/" component={LoginPage} exact/>
+                    <PRoute path="/dashboard" component={()=>{return(<div>dashboard</div>);}} exact/>
+                    <Route component={()=>{return( <h1>Error 404</h1> );}} />
+                  </Switch>
+                </div>
+              </div>
+            </div>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

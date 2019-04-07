@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # Secrets
-/svars.json
+./svars.json
 svars.json

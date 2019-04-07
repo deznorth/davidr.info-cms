@@ -1,0 +1,19 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-03-04 22:56:18 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-28 14:45:44
+*/
+
+@import '../../../resources/vars/colors';
+
+.Footer{
+    text-align: center;
+    padding: 1.5rem 0;
+    p{
+        font-size: .75rem;
+        span{
+            color: $color-primary;
+        }
+    }
+}
