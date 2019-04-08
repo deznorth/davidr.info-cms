@@ -1,0 +1,13 @@
+
+.SocialLinksEditor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    h2{
+        align-self: flex-start;
+        margin-bottom: 3rem;
+    }
+}

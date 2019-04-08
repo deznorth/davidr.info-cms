@@ -4,6 +4,7 @@ import './SitemetaPage.scss';
 //Components
 import ProfBioEditor from './components/ProfBioEditor/ProfBioEditor';
 import ExtBioEditor from './components/ExtBioEditor/ExtBioEditor';
+import SocialLinksEditor from './components/SocialLinksEditor/SocialLinksEditor';
 
 class SitemetaPage extends Component{
 
@@ -17,6 +18,7 @@ class SitemetaPage extends Component{
                 <h1>Sitemeta</h1>
                 <ProfBioEditor />
                 <ExtBioEditor />
+                <SocialLinksEditor />
             </div>
         );
     }

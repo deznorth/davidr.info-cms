@@ -1,0 +1,37 @@
+
+.SocialLinkForm{
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(7.5rem,auto) 1fr 5rem;
+    grid-column-gap: 1rem;
+
+    input[type="text"]{
+        margin:0;
+    }
+
+    .colorWrapper{
+        position: relative;
+        max-height: 2.4rem;
+
+        button{
+            background-color: transparent;
+            border: 2px solid #cccccc;
+            margin: 0;
+        }
+        .blockPicker{
+            position: absolute;
+            top: 2.5rem;
+            left: 50%;
+            margin-left: -80%;
+            z-index: 2;
+            transition: opacity .1s ease-out;
+
+            &.closed{
+                overflow: hidden;
+                opacity: 0;
+                max-height: 0;
+            }
+        }
+    }
+
+    
+}

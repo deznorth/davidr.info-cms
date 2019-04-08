@@ -15,6 +15,30 @@ export const toggleSideMenu = () => dispatch => {
 }
 
 //Create
+export const createSocialLink = newSocialLink => dispatch => {
+    const { label, url, iconClass, color } = newSocialLink;
+
+    if(label !== '' && url !== '' && iconClass !== '' && color !== ''){
+        fetch(`/api/sitemeta/socialLink?token=${token}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newSocialLink)
+        })
+        .then(res => res.json()
+        .then(socialLink => {
+            if(!socialLink.success){
+                console.log(socialLink);
+            } else {
+                dispatch(fetchSocialLinks());
+            }
+        }));
+    }  else {
+        console.log('SocialLink inputs can\'t be empty');
+    }
+    
+}
 
 //Read
 export const fetchExtBio = () => dispatch => {
@@ -45,7 +69,7 @@ export const fetchSocialLinks = () => dispatch => {
     .then(socialLinks => {
         dispatch({
             type: FETCH_SOCIALLINKS,
-            payload: socialLinks
+            payload: socialLinks.socialLinks
         });
     }));
 }
