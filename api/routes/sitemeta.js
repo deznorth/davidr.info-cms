@@ -88,6 +88,9 @@ router.put('/socialLink', Auth.checkToken, (req,res) => {
         label: req.body.label,
         color: req.body.color,
         iconClass: req.body.iconClass
+     },
+     {
+        new: true //return the updated object rather than the original
      }, (err, socialLink) => {
         if(err){
             console.log(err);
@@ -113,6 +116,9 @@ router.put('/bio/professional', Auth.checkToken, (req,res) => {
             title: req.body.title,
             body: req.body.body
         }
+    },
+    {
+        new: true //return the updated object rather than the original
     }, (err, bio) => {
         if(err){
             console.log(err);
@@ -137,6 +143,9 @@ router.put('/bio/extra', Auth.checkToken, (req,res) => {
             title: req.body.title,
             body: req.body.body
         }
+    },
+    {
+        new: true //return the updated object rather than the original
     }, (err, bio) => {
         if(err){
             console.log(err);
@@ -156,7 +165,6 @@ router.put('/bio/extra', Auth.checkToken, (req,res) => {
 })
 
 //DESTROY
-
 router.delete('/socialLink', Auth.checkToken, (req,res) => {
     SocialLink.findOneAndDelete({ _id:req.body.id }, (err, socialLink) => {
         if(err){

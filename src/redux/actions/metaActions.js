@@ -17,7 +17,7 @@ export const toggleSideMenu = () => dispatch => {
 //Create
 
 //Read
-export const fetchExtraBio = () => dispatch => {
+export const fetchExtBio = () => dispatch => {
     fetch(`/api/sitemeta/bio/extra`)
     .then(res => res.json()
     .then(bio => {
