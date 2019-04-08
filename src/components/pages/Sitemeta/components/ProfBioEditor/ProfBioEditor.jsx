@@ -9,10 +9,10 @@ import { fetchProfBio, updateProfBio } from '../../../../../redux/actions/metaAc
 class ProfBioEditor extends Component{
 
     state = {
-        loadedImg: '',
-        imgUrl: '',
-        title: '',
-        body: ''
+        loadedImg: this.props.imgUrl || '',
+        imgUrl: this.props.imgUrl || '',
+        title: this.props.title || '',
+        body: this.props.body || ''
     }
   
     componentDidMount(){

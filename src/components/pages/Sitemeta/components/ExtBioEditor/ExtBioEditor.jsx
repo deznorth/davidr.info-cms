@@ -9,8 +9,8 @@ import { fetchExtBio, updateExtBio } from '../../../../../redux/actions/metaActi
 class ExtBioEditor extends Component{
 
     state = {
-        title: '',
-        body: ''
+        title: this.props.title || '',
+        body: this.props.body || ''
     }
   
     componentDidMount(){
