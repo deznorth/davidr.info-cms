@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './ProfBioEditor.scss';
 
 //Actions
-import { fetchProfBio } from '../../../../../redux/actions/metaActions';
+import { fetchProfBio, updateProfBio } from '../../../../../redux/actions/metaActions';
 
 class ProfBioEditor extends Component{
 
@@ -53,7 +53,13 @@ class ProfBioEditor extends Component{
     }
 
     handleSave = (e) => {
-        
+        const newProfBio = {
+            imgUrl: this.state.imgUrl,
+            title: this.state.title,
+            body: this.state.body
+        }
+
+        this.props.updateProfBio(newProfBio);
         e.preventDefault();
     }
 
@@ -78,6 +84,7 @@ class ProfBioEditor extends Component{
 
 ProfBioEditor.propTypes = {
     fetchProfBio: PropTypes.func.isRequired,
+    updateProfBio: PropTypes.func.isRequired,
     imgUrl: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string
@@ -89,4 +96,4 @@ const mapStateToProps = state => ({
     body: state.meta.profBio.body
 });
 
-export default connect(mapStateToProps, { fetchProfBio })(ProfBioEditor);
+export default connect(mapStateToProps, { fetchProfBio, updateProfBio })(ProfBioEditor);

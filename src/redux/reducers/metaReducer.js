@@ -1,4 +1,11 @@
-import { TOGGLE_SIDEMENU, FETCH_PROFBIO, FETCH_EXTBIO, FETCH_SOCIALLINKS } from '../actions/types';
+import { 
+    TOGGLE_SIDEMENU,
+    FETCH_PROFBIO,
+    FETCH_EXTBIO,
+    FETCH_SOCIALLINKS,
+    UPDATE_PROFBIO,
+    UPDATE_EXTBIO
+} from '../actions/types';
 
 const initialState = {
     showSideMenu: true,
@@ -19,10 +26,20 @@ export default (state = initialState, action) => {
                 ...state,
                 profBio: action.payload
             };
+        case UPDATE_PROFBIO:
+            return {
+                ...state,
+                profBio: action.payload
+            };
         case FETCH_EXTBIO:
             return {
                 ...state,
                 extBio: action.payload,
+            };
+        case UPDATE_EXTBIO:
+            return {
+                ...state,
+                extBio: action.payload
             };
         case FETCH_SOCIALLINKS:
             return {

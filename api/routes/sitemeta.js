@@ -23,13 +23,18 @@ router.post('/socialLink', Auth.checkToken, (req,res) => {
             }, (err, socialLink) => {
                 if(err){
                     console.log(err);
-                    res.status(500).send(`Error while creating socialLink:\n${err}`);
+                    res.status(500).json({
+                        success:false,
+                        message: 'Error while creating socialLink',
+                        error: err
+                    });
                 } else {
                     socialLink.save();
                     sitemeta.socialLinks.push(socialLink);
                     sitemeta.save();
                     res.status(200).json({
-                        status: 'success',
+                        success:true,
+                        message: 'successfully created socialLink',
                         socialLink: socialLink
                     });
                 }
@@ -40,7 +45,7 @@ router.post('/socialLink', Auth.checkToken, (req,res) => {
 
 //READ
 router.get('/', Auth.checkToken, (req,res) => {
-    Sitemeta.find({}, { _id: 0 }).populate('socialLinks').exec((err, sitemeta) => {
+    Sitemeta.findOne({}, { _id: 0 }).populate('socialLinks').exec((err, sitemeta) => {
         if(err) console.log(err);
         else{
             res.json(sitemeta);
@@ -49,19 +54,19 @@ router.get('/', Auth.checkToken, (req,res) => {
 });
 
 router.get('/bio/professional', (req,res) => {
-    Sitemeta.findOne({}, { Bio:1, _id: 0 }, (err, sitemeta) => {
+    Sitemeta.findOne({}, { profBio:1, _id: 0 }, (err, sitemeta) => {
         if(err) console.log(err);
         else{
-            res.json(sitemeta.Bio.professional);
+            res.json(sitemeta.profBio);
         }
     });
 });
 
 router.get('/bio/extra', (req,res) => {
-    Sitemeta.findOne({}, { Bio:1, _id: 0 }, (err, sitemeta) => {
+    Sitemeta.findOne({}, { extBio:1, _id: 0 }, (err, sitemeta) => {
         if(err) console.log(err);
         else{
-            res.json(sitemeta.Bio.extra);
+            res.json(sitemeta.extBio);
         }
     });
 });
@@ -87,41 +92,63 @@ router.put('/socialLink', Auth.checkToken, (req,res) => {
         if(err){
             console.log(err);
             res.status(500).json({
-                status: 'error',
+                success:false,
+                message: 'error while updating socialLink',
                 error: err
             });
         } else {
             res.status(200).json({
-                status: 'success',
+                success:true,
+                message: 'successfully updated socialLink',
                 updated: socialLink
             });
         }
     });
 });
 
-router.put('/bio', Auth.checkToken, (req,res) => {
+router.put('/bio/professional', Auth.checkToken, (req,res) => {
     Sitemeta.findOneAndUpdate({}, {
-        Bio: {
-            professional: {
-                imgUrl: req.body.imgUrl,
-                title: req.body.profTitle,
-                body: req.body.profBody
-            },
-            extra: {
-                title: req.body.exTitle,
-                body: req.body.exBody
-            }
+        profBio: {
+            imgUrl: req.body.imgUrl,
+            title: req.body.title,
+            body: req.body.body
         }
     }, (err, bio) => {
         if(err){
             console.log(err);
             res.status(500).json({
-                status: 'error while updating Bio',
+                success: false,
+                message: 'error while updating profBio',
                 error: err
             });
         } else {
             res.status(200).json({
-                status: 'successfully updated bio',
+                success: true,
+                message: 'successfully updated profbio',
+                updated: bio
+            });
+        }
+    });
+})
+
+router.put('/bio/extra', Auth.checkToken, (req,res) => {
+    Sitemeta.findOneAndUpdate({}, {
+        extBio: {
+            title: req.body.title,
+            body: req.body.body
+        }
+    }, (err, bio) => {
+        if(err){
+            console.log(err);
+            res.status(500).json({
+                success: false,
+                message: 'error while updating extBio',
+                error: err
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                message: 'successfully updated extbio',
                 updated: bio
             });
         }
@@ -135,12 +162,14 @@ router.delete('/socialLink', Auth.checkToken, (req,res) => {
         if(err){
             console.log(err);
             res.status(500).json({
-                status: 'error while deleting socialLink',
+                success: false,
+                message: 'error while deleting socialLink',
                 error: err
             });
         } else {
             res.status(200).json({
-                status: 'success',
+                success: true,
+                message: 'socialLink deleted successfully',
                 deleted: socialLink
             });
         }
