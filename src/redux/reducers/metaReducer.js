@@ -1,11 +1,9 @@
-import { TOGGLE_SIDEMENU, FETCH_BIO, FETCH_SOCIALLINKS } from '../actions/types';
+import { TOGGLE_SIDEMENU, FETCH_PROFBIO, FETCH_EXTBIO, FETCH_SOCIALLINKS } from '../actions/types';
 
 const initialState = {
     showSideMenu: true,
-    Bio: {
-        professional: {},
-        extra: {}
-    },
+    profBio: {},
+    extBio: {},
     socialLinks: []
 }
 
@@ -16,11 +14,15 @@ export default (state = initialState, action) => {
                 ...state,
                 showSideMenu: !state.showSideMenu
             };
-        case FETCH_BIO:
+        case FETCH_PROFBIO:
             return {
                 ...state,
-                "Bio.professional": action.payload.prof,
-                "Bio.extra": action.payload.extra
+                profBio: action.payload
+            };
+        case FETCH_EXTBIO:
+            return {
+                ...state,
+                extBio: action.payload,
             };
         case FETCH_SOCIALLINKS:
             return {

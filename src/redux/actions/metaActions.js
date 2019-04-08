@@ -1,4 +1,4 @@
-import { TOGGLE_SIDEMENU, FETCH_BIO, FETCH_SOCIALLINKS } from './types';
+import { TOGGLE_SIDEMENU, FETCH_PROFBIO, FETCH_EXTBIO, FETCH_SOCIALLINKS } from './types';
 
 const token = localStorage.getItem('auth_token');
 
@@ -8,22 +8,30 @@ export const toggleSideMenu = () => dispatch => {
     });
 }
 
-export const fetchBio = () => dispatch => {
-    fetch(`/api/sitemeta/bio?token=${token}`)
+export const fetchExtraBio = () => dispatch => {
+    fetch(`/api/sitemeta/bio`)
     .then(res => res.json()
     .then(bio => {
         dispatch({
-            type: FETCH_BIO,
-            payload: {
-                prof: bio.professional,
-                extra: bio.extra
-            }
+            type: FETCH_EXTBIO,
+            payload: bio.Bio.extra
+        });
+    }));
+}
+
+export const fetchProfBio = () => dispatch => {
+    fetch(`/api/sitemeta/bio/professional`)
+    .then(res => res.json()
+    .then(bio => {
+        dispatch({
+            type: FETCH_PROFBIO,
+            payload: bio
         });
     }));
 }
 
 export const fetchSocialLinks = () => dispatch => {
-    fetch(`/api/sitemeta/socialLinks?token=${token}`)
+    fetch(`/api/sitemeta/socialLinks`)
     .then(res => res.json()
     .then(socialLinks => {
         dispatch({

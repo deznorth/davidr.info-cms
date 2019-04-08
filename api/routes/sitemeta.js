@@ -48,17 +48,26 @@ router.get('/', Auth.checkToken, (req,res) => {
     });
 });
 
-router.get('/bio', (req,res) => {
-    Sitemeta.find({}, { Bio:1, _id: 0 }, (err, sitemeta) => {
+router.get('/bio/professional', (req,res) => {
+    Sitemeta.findOne({}, { Bio:1, _id: 0 }, (err, sitemeta) => {
         if(err) console.log(err);
         else{
-            res.json(sitemeta);
+            res.json(sitemeta.Bio.professional);
+        }
+    });
+});
+
+router.get('/bio/extra', (req,res) => {
+    Sitemeta.findOne({}, { Bio:1, _id: 0 }, (err, sitemeta) => {
+        if(err) console.log(err);
+        else{
+            res.json(sitemeta.Bio.extra);
         }
     });
 });
 
 router.get('/socialLinks', (req,res) => {
-    Sitemeta.find({}, { socialLinks:1, _id: 0 }).populate('socialLinks').exec((err, sitemeta) => {
+    Sitemeta.findOne({}, { socialLinks:1, _id: 0 }).populate('socialLinks').exec((err, sitemeta) => {
         if(err) console.log(err);
         else{
             res.json(sitemeta);

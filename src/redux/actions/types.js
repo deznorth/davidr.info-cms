@@ -1,6 +1,7 @@
 //Meta Actions
 export const TOGGLE_SIDEMENU = 'TOGGLE_SIDEMENU';
-export const FETCH_BIO = 'FETCH_BIO';
+export const FETCH_PROFBIO = 'FETCH_PROFBIO';
+export const FETCH_EXTBIO = 'FETCH_EXTBIO';
 export const FETCH_SOCIALLINKS = 'FETCH_SOCIALLINKS';
 
 //Skills Actions
