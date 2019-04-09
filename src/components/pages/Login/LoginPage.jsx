@@ -39,7 +39,7 @@ class LoginPage extends Component {
     }
 
     handleSubmit = (e) => {
-        fetch('http://man.davidr.info/api/user/login', {
+        fetch('/api/user/login', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
