@@ -11,7 +11,7 @@ const saltRounds = svarsFile.auth.saltRounds || process.env.SALT_ROUNDS;
 const jwtSecret = svarsFile.auth.jwtSecret || process.env.JWT_SECRET;
 
 //Create
-router.post('/create', Auth.checkToken, (req,res) => {
+router.post('/create', (req,res) => {
     const { body } = req;
     const {
         username,
