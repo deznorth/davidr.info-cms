@@ -141,3 +141,28 @@ export const updateSocialLink = updatedSocialLink => dispatch => {
     }
     
 }
+
+//Destroy
+export const deleteSocialLink = id => dispatch => {
+
+    if(id !== ''){
+        fetch(`/api/sitemeta/socialLink?token=${token}`, {
+            method: 'DELETE',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({id:id})
+        })
+        .then(res => res.json()
+        .then(socialLink => {
+            if(!socialLink.success){
+                console.log(socialLink);
+            } else {
+                dispatch(fetchSocialLinks());
+            }
+        }));
+    }  else {
+        console.log('SocialLink id required for deletion');
+    }
+    
+}

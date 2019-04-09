@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './SocialLinksEditor.scss';
 
 //Actions
-import { fetchSocialLinks } from '../../../../../redux/actions/metaActions';
+import { fetchSocialLinks, deleteSocialLink } from '../../../../../redux/actions/metaActions';
 
 //Components
 import SocialLinkForm from './components/SocialLinkForm/SocialLinkForm';
@@ -32,6 +32,10 @@ class SocialLinksEditor extends Component{
         });
     }
 
+    handleSocialLinkDelete = id => {
+        this.props.deleteSocialLink(id);
+    }
+
     render(){
 
         const socialLinkItems = this.props.socialLinks.map(socialLink => {
@@ -40,6 +44,7 @@ class SocialLinksEditor extends Component{
                 key={socialLink._id} 
                 {...socialLink} 
                 handleEdit={this.handleSocialLinkEdit}
+                handleDelete={this.handleSocialLinkDelete}
                 />
             );
         });
@@ -58,6 +63,7 @@ class SocialLinksEditor extends Component{
 
 SocialLinksEditor.propTypes = {
     fetchSocialLinks: PropTypes.func.isRequired,
+    deleteSocialLink: PropTypes.func.isRequired,
     socialLinks: PropTypes.array.isRequired
 }
 
@@ -65,4 +71,4 @@ const mapStateToProps = state => ({
     socialLinks: state.meta.socialLinks
 });
 
-export default connect(mapStateToProps, { fetchSocialLinks })(SocialLinksEditor);
+export default connect(mapStateToProps, { fetchSocialLinks, deleteSocialLink })(SocialLinksEditor);
