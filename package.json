@@ -1,6 +1,6 @@
 {
   "name": "davidr.info-cms",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
