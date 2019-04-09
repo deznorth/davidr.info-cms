@@ -118,8 +118,8 @@ class SocialLinkForm extends Component{
                     </div>
                 </div>
                 <input onChange={this.handleChange} type="text" name="iconClass" placeholder="Fontawesome Icon Class" value={this.state.iconClass}/>
-                <input type="submit" value="Add"/>
-                <button className="saveBtn btn-green" onClick={this.handleEdit}>Save</button>
+                <button className="btn-green" type="submit"><i className="fas fa-plus"></i></button>
+                <button className="saveBtn" onClick={this.handleEdit}>Save</button>
             </form>
         );
     }
