@@ -15,7 +15,7 @@ class SitemetaPage extends Component{
     render(){
         return (
             <div id="SitemetaPage">
-                <h1>Sitemeta</h1>
+                <h1>Info</h1>
                 <ProfBioEditor />
                 <ExtBioEditor />
                 <SocialLinksEditor />

@@ -32,7 +32,7 @@ class SideMenu extends Component{
                 <div className="navLinksGroup">
                     <ul>
                         <Link className="navLink" to='/dashboard'><i className="fas fa-home"></i>Home</Link>
-                        <Link className="navLink" to='/sitemeta'><i className="far fa-address-card"></i>Sitemeta</Link>
+                        <Link className="navLink" to='/sitemeta'><i className="far fa-address-card"></i>Info</Link>
                         <Link className="navLink" to='/projects'><i className="fas fa-cubes"></i>Projects</Link>
                         <Link className="navLink" to='/skills'><i className="fas fa-medal"></i>Skills</Link>
                         <Link className="navLink" to='/blog'><i className="fas fa-quote-left"></i>Blog</Link>
