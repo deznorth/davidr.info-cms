@@ -1,6 +1,6 @@
 //Dependencies
 const express = require('express');
-const app = express();
+const app = module.exports = express();
 const path = require('path');
 const compression = require('compression');
 const morgan = require('morgan');
@@ -23,12 +23,12 @@ mongoose.connect(DB_URL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 //App Setup
 
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(path.resolve(__dirname, 'build')));
 const normalizePort = port => parseInt(port, 10);
 const PORT = normalizePort(process.env.PORT || 5000);
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.json());
-app.use(methodOverride("_method"));
-app.use(express.static(path.resolve(__dirname, 'build')));
+//app.use(express.json());
+//app.use(methodOverride("_method"));
 
 if(!dev){
     app.disable('x-powered-by');
@@ -46,9 +46,10 @@ app.use('/api/user', userRoutes);
 app.use('/api/sitemeta', sitemetaRoutes);
 app.use('/api/projects', projectRoutes);
 
+/*
 app.get('*', (req,res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
+});*/
 
 app.listen(PORT, err => {
     if (err) console.log(err);

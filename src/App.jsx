@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-03-04 19:02:41 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-04-07 22:23:47
+ * @Last Modified time: 2019-04-09 00:15:37
 */
 
 import React, { Component } from 'react';
@@ -35,9 +35,7 @@ class App extends Component {
               <div className="App-content bg-glass">
                 <div id="PageWrapper">
                   <Switch>
-                    <Route path="/" component={() => {
-                      return <LoginPage showSideMenu={this.handleShowSideMenu} />;
-                    }} exact/>
+                    <Route path="/" component={LoginPage} exact/>
                     <PRoute path="/dashboard" component={DashboardPage} exact/>
                     <PRoute path="/sitemeta" component={SitemetaPage} exact/>
                     <Route component={ErrorPage} />
