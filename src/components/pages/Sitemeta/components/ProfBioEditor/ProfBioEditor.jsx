@@ -73,8 +73,10 @@ class ProfBioEditor extends Component{
                         <input onChange={this.handleChange} type="text" name="title" placeholder="Title" value={this.state.title}/>
                         <input onBlur={this.handleImgUpdate} onChange={this.handleChange} type="text" name="imgUrl" placeholder="Image Url" value={this.state.imgUrl}/>
                         <textarea onChange={this.handleChange} name="body" placeholder="Professional Bio Content..." value={this.state.body}></textarea>
-                        <button onClick={this.handleReset} className="resetBtn">Reset</button>
-                        <input type="submit" value="Save"/>
+                        <div>
+                            <input type="submit" value="Save"/>
+                            <button onClick={this.handleReset} className="resetBtn btn-red">Reset</button>
+                        </div>
                     </form>
                 </div>
             </div>

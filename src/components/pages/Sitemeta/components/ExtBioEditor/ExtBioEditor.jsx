@@ -57,8 +57,10 @@ class ExtBioEditor extends Component{
                 <form onSubmit={this.handleSave} className="inputsWrapper">
                     <input onChange={this.handleChange} type="text" name="title" placeholder="Title" value={this.state.title}/>
                     <textarea onChange={this.handleChange} name="body" placeholder="Extra Bio Content..." value={this.state.body}></textarea>
-                    <button onClick={this.handleReset} className="resetBtn">Reset</button>
-                    <input type="submit" value="Save"/>
+                    <div>
+                        <input type="submit" value="Save"/>
+                        <button onClick={this.handleReset} className="resetBtn btn-red">Reset</button>
+                    </div>
                 </form>
             </div>
         );
