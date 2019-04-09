@@ -1,0 +1,24 @@
+
+.SocialLinkItem{
+    display: grid;
+    grid-template-columns: 1fr 1fr minmax(7.5rem,auto) 1fr 3rem;
+    grid-column-gap: 2rem;
+    margin-bottom: 1rem;
+    transition: transform 0.05s ease;
+
+    p{
+        justify-self: center;
+        align-self: center;
+    }
+
+    button{
+        background-color: #923a3a;
+    }
+
+    &:hover{
+        transform: translate(0,-2px);
+    }
+    &:active{
+        transform: translate(0,2px);
+    }
+}
