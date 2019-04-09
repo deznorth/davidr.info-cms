@@ -12,22 +12,42 @@ import SocialLinkItem from './components/SocialLinkItem/SocialLinkItem';
 
 class SocialLinksEditor extends Component{
 
+    state = {
+        editing: false,
+        selected: {}
+    }
+
     componentDidMount(){
         this.props.fetchSocialLinks();
+    }
+
+    handleSocialLinkEdit = id => {
+        const item = this.props.socialLinks.find(link => {
+            return link._id === id
+        });
+
+        this.setState({
+            editing: true,
+            selected: item
+        });
     }
 
     render(){
 
         const socialLinkItems = this.props.socialLinks.map(socialLink => {
             return (
-                <SocialLinkItem {...socialLink} />
+                <SocialLinkItem 
+                key={socialLink._id} 
+                {...socialLink} 
+                handleEdit={this.handleSocialLinkEdit}
+                />
             );
         });
 
         return (
             <div className="SocialLinksEditor bg-glass">
                 <h2>Social Links</h2>
-                <SocialLinkForm />
+                <SocialLinkForm editing={this.state.editing} selected={this.state.selected} />
                 <div className="SocialLinksDisplay">
                     {socialLinkItems}
                 </div>

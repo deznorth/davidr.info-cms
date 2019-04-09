@@ -44,4 +44,11 @@ input[type="submit"], button{
         background-color: lighten($color-accent, 8);
         transform: translate(0,2px);
     }
+
+    &.btn-red{
+        background-color: $color-btn-red;
+    }
+    &.btn-green{
+        background-color: $color-btn-green;
+    }
 }

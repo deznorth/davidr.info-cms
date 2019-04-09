@@ -116,3 +116,28 @@ export const updateExtBio = newExtBio => dispatch => {
         }
     }));
 }
+
+export const updateSocialLink = updatedSocialLink => dispatch => {
+    const { id, label, url, iconClass, color } = updatedSocialLink;
+
+    if(id !== '' && label !== '' && url !== '' && iconClass !== '' && color !== ''){
+        fetch(`/api/sitemeta/socialLink?token=${token}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedSocialLink)
+        })
+        .then(res => res.json()
+        .then(socialLink => {
+            if(!socialLink.success){
+                console.log(socialLink);
+            } else {
+                dispatch(fetchSocialLinks());
+            }
+        }));
+    }  else {
+        console.log('SocialLink inputs can\'t be empty');
+    }
+    
+}

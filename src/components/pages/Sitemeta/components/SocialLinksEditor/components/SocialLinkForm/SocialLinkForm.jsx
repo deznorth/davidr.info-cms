@@ -8,15 +8,25 @@ import './SocialLinkForm.scss';
 import { BlockPicker } from 'react-color';
 
 //Actions
-import { createSocialLink } from '../../../../../../../redux/actions/metaActions';
+import { createSocialLink, updateSocialLink } from '../../../../../../../redux/actions/metaActions';
 
 class SocialLinkForm extends Component{
 
     state = {
+        editing: false,
         label: '',
         url: '',
         iconClass: '',
         color: '#ffffff'
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.selected !== this.props.selected){
+            this.setState({
+                ...this.props.selected,
+                editing: this.props.editing
+            });
+        }
     }
 
     handleChange = e => {
@@ -51,13 +61,54 @@ class SocialLinkForm extends Component{
         }
 
         this.props.createSocialLink(newSocialLink);
+
+        this.setState({
+            editing: false,
+            selected: undefined,
+            _id: undefined,
+            label: '',
+            url: '',
+            iconClass: '',
+            color: '#FFFFFF'
+        });
         
         e.preventDefault();
     }
 
+    handleEdit = e => {
+
+        const updatedSocialLink = {
+            id: this.state._id,
+            label: this.state.label,
+            url: this.state.url,
+            iconClass: this.state.iconClass,
+            color: this.state.color
+        }
+
+        this.props.updateSocialLink(updatedSocialLink);
+
+        this.setState({
+            editing: false,
+            selected: undefined,
+            _id: undefined,
+            label: '',
+            url: '',
+            iconClass: '',
+            color: '#FFFFFF'
+        });
+
+        e.preventDefault();
+    }
+
     render(){
+
+        let editClass = '';
+        if(this.state.editing){
+            editClass = 'editing';
+        }
+
         return (
-            <form onSubmit={this.handleSubmit} className="SocialLinkForm">
+            <form onSubmit={this.handleSubmit} className={`SocialLinkForm ${editClass}`}>
                 <input onChange={this.handleChange} type="text" name="label" placeholder="Label" value={this.state.label}/>
                 <input onChange={this.handleChange} type="text" name="url" placeholder="Url" value={this.state.url}/>
                 <div className="colorWrapper">
@@ -68,13 +119,15 @@ class SocialLinkForm extends Component{
                 </div>
                 <input onChange={this.handleChange} type="text" name="iconClass" placeholder="Fontawesome Icon Class" value={this.state.iconClass}/>
                 <input type="submit" value="Add"/>
+                <button className="saveBtn btn-green" onClick={this.handleEdit}>Save</button>
             </form>
         );
     }
 }
 
 SocialLinkForm.propTypes = {
-    createSocialLink: PropTypes.func.isRequired
+    createSocialLink: PropTypes.func.isRequired,
+    updateSocialLink: PropTypes.func.isRequired
 }
 
-export default connect(null, { createSocialLink })(SocialLinkForm);
+export default connect(null, { createSocialLink, updateSocialLink })(SocialLinkForm);
