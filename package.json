@@ -2,7 +2,7 @@
   "name": "davidr.info-cms",
   "version": "0.3.0",
   "private": true,
-  "proxy":"http://localhost:5000",
+  "main": "/api/app.js",
   "dependencies": {
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
@@ -12,22 +12,14 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.4.20",
     "mongoose-unique-validator": "^2.0.2",
-    "morgan": "^1.9.1",
-    "react": "^16.8.6",
-    "react-color": "^2.17.0",
-    "react-dom": "^16.8.6",
-    "react-redux": "^6.0.1",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "morgan": "^1.9.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:dev": "nodemon app.js"
+    "start": "node ./api/app.js",
+    "start:dev": "nodemon ./api/app.js",
+    "start:prod": "set NODE_ENV=production&& npm run start:dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
-const svarsFile = require('../../svars.json');
-const jwtSecret = svarsFile.auth.jwtSecret || process.env.JWT_SECRET;
+
+const dev = process.env.NODE_ENV !== 'production';
+const svarsFile = dev ? require('../config/svars.json') : {};
+const jwtSecret = dev ? svarsFile.auth.jwtSecret : process.env.JWT_SECRET;
 
 const auth = {};
 

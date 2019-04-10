@@ -6,9 +6,10 @@ const Auth = require('../middleware/auth');
 
 const User = require('../models/User');
 
-const svarsFile = require('../../svars.json');
-const saltRounds = svarsFile.auth.saltRounds || process.env.SALT_ROUNDS;
-const jwtSecret = svarsFile.auth.jwtSecret || process.env.JWT_SECRET;
+const dev = process.env.NODE_ENV !== 'production';
+const svarsFile = dev ? require('../config/svars.json') : {};
+const saltRounds = dev ? svarsFile.auth.saltRounds : process.env.SALT_ROUNDS;
+const jwtSecret = dev ? svarsFile.auth.jwtSecret : process.env.JWT_SECRET;
 
 //Create
 router.post('/create', (req,res) => {
