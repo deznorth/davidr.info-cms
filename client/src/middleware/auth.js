@@ -1,8 +1,14 @@
+
+const dev = process.env.NODE_ENV !== 'production';
 const auth = {};
 
 auth.isLoggedIn = () => {
-    const token = localStorage.getItem('auth_token');
-    return !!token;
+    if(dev){
+        return true
+    } else{
+        const token = localStorage.getItem('auth_token');
+        return !!token;
+    }
 }
 
 auth.logout = () => {
