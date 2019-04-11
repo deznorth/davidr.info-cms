@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Auth = require('../middleware/auth');
 
-const User = require('../models/User');
+const User = require('../models/user');
 
 const dev = process.env.NODE_ENV !== 'production';
 const svarsFile = dev ? require('../config/svars.json') : {};
