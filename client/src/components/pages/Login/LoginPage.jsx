@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './LoginPage.scss';
 
-const ls = require('local-storage');
 
 //Middleware
 import Auth from '../../../middleware/auth';
@@ -14,6 +13,7 @@ import MessageBit from '../../elements/MessageBit/MessageBit';
 
 //Actions
 import { toggleSideMenu } from '../../../redux/actions/metaActions';
+const ls = require('local-storage');
 
 class LoginPage extends Component {
     
