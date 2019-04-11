@@ -6,7 +6,8 @@ import { TOGGLE_SIDEMENU,
     UPDATE_EXTBIO
 } from './types';
 
-const token = localStorage.getItem('auth_token');
+const ls = require('local-storage');
+const token = ls.get('auth_token');
 
 export const toggleSideMenu = () => dispatch => {
     dispatch({

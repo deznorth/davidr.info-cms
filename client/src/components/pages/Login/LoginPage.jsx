@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './LoginPage.scss';
 
+const ls = require('local-storage');
+
 //Middleware
 import Auth from '../../../middleware/auth';
 
@@ -52,7 +54,7 @@ class LoginPage extends Component {
             const {success, message, token} = data;
 
             if(success){
-                localStorage.setItem('auth_token', token);
+                ls.set('auth_token', token);
                     this.setState({
                         error: undefined,
                         redirect: true
