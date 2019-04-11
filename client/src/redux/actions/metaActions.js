@@ -7,7 +7,7 @@ import { TOGGLE_SIDEMENU,
 } from './types';
 
 const ls = require('local-storage');
-//const token = ls.get('auth_token');
+const token = ls.get('auth_token');
 //console.log(token);
 
 const getToken = () => {
