@@ -7,8 +7,12 @@ import { TOGGLE_SIDEMENU,
 } from './types';
 
 const ls = require('local-storage');
-const token = ls.get('auth_token');
+//const token = ls.get('auth_token');
 //console.log(token);
+
+const getToken = () => {
+    return ls.get('auth_token');
+}
 
 export const toggleSideMenu = () => dispatch => {
     dispatch({
@@ -21,7 +25,7 @@ export const createSocialLink = newSocialLink => dispatch => {
     const { label, url, iconClass, color } = newSocialLink;
 
     if(label !== '' && url !== '' && iconClass !== '' && color !== ''){
-        fetch(`/api/sitemeta/socialLink?token=${token}`, {
+        fetch(`/api/sitemeta/socialLink?token=${getToken()}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
