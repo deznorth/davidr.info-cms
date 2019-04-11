@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const methodOverride  = require("method-override");
 
 //import api Routes
-//const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/user');
 //const sitemetaRoutes = require('./routes/sitemeta');
 //const projectRoutes = require('./routes/project');
 
@@ -39,7 +39,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 // Routes
-//app.use('/api/user', userRoutes);
+app.use('/api/user', userRoutes);
 //app.use('/api/sitemeta', sitemetaRoutes);
 //app.use('/api/projects', projectRoutes);
 
