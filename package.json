@@ -20,7 +20,7 @@
     "start:dev": "nodemon ./api/app.js",
     "start:prod": "set NODE_ENV=production&& npm run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd ./client && npm install && npm run build && mv -f ./build ../"
   },
   "eslintConfig": {
     "extends": "react-app"

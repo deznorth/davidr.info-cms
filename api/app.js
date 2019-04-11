@@ -20,7 +20,7 @@ const svarsFile = dev ? require('./config/svars.json') : {};
 
 //App Setup
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(path.resolve( 'client', 'build')));
+app.use(express.static(path.resolve('build')));
 app.use(express.json());
 app.use(methodOverride("_method"));
 const PORT = process.env.PORT || 5000;
@@ -66,7 +66,7 @@ app.use('/api/projects', projectRoutes);
 
 //Catch all
 app.get('*', (req,res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    res.sendFile(path.resolve('build', 'index.html'));
 });
 
 app.listen(PORT, err => {
