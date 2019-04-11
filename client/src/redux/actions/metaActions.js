@@ -8,6 +8,7 @@ import { TOGGLE_SIDEMENU,
 
 const ls = require('local-storage');
 const token = ls.get('auth_token');
+console.log(token);
 
 export const toggleSideMenu = () => dispatch => {
     dispatch({
