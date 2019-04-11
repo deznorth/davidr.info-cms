@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './SideMenu.scss';
@@ -31,11 +31,11 @@ class SideMenu extends Component{
                 </div>
                 <div className="navLinksGroup">
                     <ul>
-                        <Link className="navLink" to='/dashboard'><i className="fas fa-home"></i>Home</Link>
-                        <Link className="navLink" to='/sitemeta'><i className="far fa-address-card"></i>Info</Link>
-                        <Link className="navLink" to='/projects'><i className="fas fa-cubes"></i>Projects</Link>
-                        <Link className="navLink" to='/skills'><i className="fas fa-medal"></i>Skills</Link>
-                        <Link className="navLink" to='/blog'><i className="fas fa-quote-left"></i>Blog</Link>
+                        <NavLink className="navLink" activeClassName="active" to='/dashboard'><i className="fas fa-home"></i>Home</NavLink>
+                        <NavLink className="navLink" activeClassName="active" to='/sitemeta'><i className="far fa-address-card"></i>Info</NavLink>
+                        <NavLink className="navLink" activeClassName="active" to='/projects'><i className="fas fa-cubes"></i>Projects</NavLink>
+                        <NavLink className="navLink" activeClassName="active" to='/skills'><i className="fas fa-medal"></i>Skills</NavLink>
+                        <NavLink className="navLink" activeClassName="active" to='/blog'><i className="fas fa-quote-left"></i>Blog</NavLink>
                     </ul>
                 </div>
                 <div className="extraLinksGroup">
