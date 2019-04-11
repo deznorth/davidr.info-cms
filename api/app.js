@@ -42,9 +42,9 @@ mongoose.connect(DB_URL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 // Routes
-app.use('/api/user', userRoutes);
-app.use('/api/sitemeta', sitemetaRoutes);
-app.use('/api/projects', projectRoutes);
+//app.use('/api/user', userRoutes);
+//app.use('/api/sitemeta', sitemetaRoutes);
+//app.use('/api/projects', projectRoutes);
 
 //Catch all
 app.get('*', (req,res) => {
