@@ -7,9 +7,10 @@ import { TOGGLE_SIDEMENU,
 } from './types';
 
 const ls = require('local-storage');
-const token = ls.get('auth_token');
-//console.log(token);
 
+/*
+Important: Due to the nature of import/export a const token would not be available to the functions. So I created a function that will get the token from inside each function. In the future I might come up with a better implementation but this works for now.
+*/
 const getToken = () => {
     return ls.get('auth_token');
 }
@@ -82,7 +83,7 @@ export const fetchSocialLinks = () => dispatch => {
 
 //Update
 export const updateProfBio = newProfBio => dispatch => {
-    fetch(`/api/sitemeta/bio/professional?token=${token}`, {
+    fetch(`/api/sitemeta/bio/professional?token=${getToken()}`, {
         method: 'PUT',
         headers:{
             "Content-Type":"application/json"
@@ -103,7 +104,7 @@ export const updateProfBio = newProfBio => dispatch => {
 }
 
 export const updateExtBio = newExtBio => dispatch => {
-    fetch(`/api/sitemeta/bio/extra?token=${token}`, {
+    fetch(`/api/sitemeta/bio/extra?token=${getToken()}`, {
         method: 'PUT',
         headers:{
             "Content-Type":"application/json"
@@ -127,7 +128,7 @@ export const updateSocialLink = updatedSocialLink => dispatch => {
     const { id, label, url, iconClass, color } = updatedSocialLink;
 
     if(id !== '' && label !== '' && url !== '' && iconClass !== '' && color !== ''){
-        fetch(`/api/sitemeta/socialLink?token=${token}`, {
+        fetch(`/api/sitemeta/socialLink?token=${getToken()}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -152,7 +153,7 @@ export const updateSocialLink = updatedSocialLink => dispatch => {
 export const deleteSocialLink = id => dispatch => {
 
     if(id !== ''){
-        fetch(`/api/sitemeta/socialLink?token=${token}`, {
+        fetch(`/api/sitemeta/socialLink?token=${getToken()}`, {
             method: 'DELETE',
             headers:{
                 'Content-Type':'application/json'
