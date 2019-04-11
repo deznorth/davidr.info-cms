@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride  = require("method-override");
+const cors = require('cors');
 const app = module.exports = express();
 
 //import api Routes
@@ -24,15 +25,34 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 const PORT = process.env.PORT || 5000;
 
+const corsWhitelist = [
+    'http://man.davidr.info/',
+    'https://davidrojasportfolio-cms.herokuapp.com/',
+    'https://www.davidr.info/'
+];
+
 if(!dev){
     app.disable('x-powered-by');
     app.use(compression());
     app.use(morgan('common'));
+    app.use(cors({
+        origin: (origin, callback) => {
+            if(corsWhitelist.indexOf(origin) !== -1){
+                callback(null,true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
+        optionsSuccessStatus: 200
+    }));
 }
 
 if(dev){
     app.use(morgan('dev'));
+    app.use(cors());
 }
+
+app.options('*', cors());
 
 //Database Setup
 const DB_URL = dev ? svarsFile.mongodb.db_dev : process.env.DB_URL;
