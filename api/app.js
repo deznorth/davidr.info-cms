@@ -11,7 +11,7 @@ const methodOverride  = require("method-override");
 //import api Routes
 const userRoutes = require('./routes/user');
 const sitemetaRoutes = require('./routes/sitemeta');
-//const projectRoutes = require('./routes/project');
+const projectRoutes = require('./routes/project');
 
 //Development environment setup [if in dev, you'll need a valid svars.json file]
 const dev = process.env.NODE_ENV !== 'production';
@@ -41,7 +41,7 @@ mongoose.Promise = global.Promise;
 // Routes
 app.use('/api/user', userRoutes);
 app.use('/api/sitemeta', sitemetaRoutes);
-//app.use('/api/projects', projectRoutes);
+app.use('/api/projects', projectRoutes);
 
 //Catch all
 app.get('*', (req,res) => {
